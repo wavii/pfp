@@ -56,7 +56,7 @@ Parse times and maximum memory usage were recorded on a c1.medium Amazon EC2 ins
 
 (GPL v2)
 
-Copyright (c) 2010 Wavii, Inc. http://wavii.com/
+Copyright (c) 2010 Wavii, Inc. <http://wavii.com/>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
