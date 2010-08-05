@@ -1,7 +1,7 @@
 pfp -- pretty fast statistical parser for natural languages
 ===========================================================
 
-pfp is a **pretty fast statistical parser** for probabilistic context free grammars.  pfp uses an exhaustive [CYK](http://en.wikipedia.org/wiki/CYK_algorithm) algorithm like the one found in [the Stanford NLP parser](http://nlp.stanford.edu/software/lex-parser.shtml), but boasts the following improvements:
+pfp is a **pretty fast statistical parser** for probabilistic context free grammars.  pfp uses the exhaustive [CYK](http://en.wikipedia.org/wiki/CYK_algorithm) algorithm found in [the Stanford NLP parser](http://nlp.stanford.edu/software/lex-parser.shtml) (and gratefully uses its trained grammar), but boasts the following improvements:
 
 * 3-4x faster than the Stanford parser
 * Uses 5-8x less resident memory
