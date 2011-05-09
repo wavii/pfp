@@ -106,7 +106,7 @@ public:
               node & tree )
   {
     pos_t sentence_size = static_cast<pos_t>(sentence.size());
-    if ( sentence_size > ws.words )
+    if ( sentence.size() > ws.words )
       throw std::runtime_error("sentence too large for provided workspace");
 
     // initialize our workspace
