@@ -1,0 +1,3 @@
+recursive-include include/pfp *
+recursive-include include/pypfp *
+recursive-include share/pfp *
