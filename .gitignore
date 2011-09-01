@@ -1,0 +1,12 @@
+# ignore .pyc files
+*.pyc
+# ignore eclipse stuff
+.project
+.cproject
+.pydevproject
+# ignore setuptools egg-info stuff
+*.egg-info
+build
+dist
+# ignore project-local env dirs
+env
