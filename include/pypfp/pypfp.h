@@ -32,7 +32,7 @@ private:
   pcfg_parser                  pcfg_;
   boost::shared_ptr<workspace> pworkspace_;
 
-  void init(size_t sentence_length = 45, const std::string & data_dir = "/usr/share/pfp/");
+  void init(size_t sentence_length = 45, const std::string & data_dir = "");
 
 public:
 

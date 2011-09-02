@@ -36,11 +36,6 @@ ADD_EXECUTABLE(pfpd
                src/moost/http/request_parser
                )
 
-ADD_LIBRARY(pypfp SHARED
-            src/pypfp/pypfp
-           )
-
-TARGET_LINK_LIBRARIES(pypfp pfp boost_python boost_filesystem boost_thread boost_regex boost_system icuio)
 TARGET_LINK_LIBRARIES(pfpd pfp boost_filesystem boost_thread boost_regex boost_system icuio)
 TARGET_LINK_LIBRARIES(pfpc pfp boost_filesystem boost_thread boost_regex boost_system icuio)
 TARGET_LINK_LIBRARIES(test pfp boost_thread boost_unit_test_framework boost_regex icuio)
@@ -50,8 +45,3 @@ INSTALL(TARGETS pfpc DESTINATION bin)
 
 INSTALL(TARGETS pfp LIBRARY DESTINATION lib)
 INSTALL(DIRECTORY share/pfp DESTINATION share)
-
-# use this to make sure libpypfp.so is instead called pfp.so and installed in /usr/lib/python2.6/dist-packages
-SET_TARGET_PROPERTIES(pypfp PROPERTIES OUTPUT_NAME "pfp")
-SET_TARGET_PROPERTIES(pypfp PROPERTIES PREFIX "")
-INSTALL(TARGETS pypfp LIBRARY DESTINATION lib/python2.6/dist-packages)

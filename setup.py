@@ -5,6 +5,10 @@ except ImportError:
     use_setuptools()
     from setuptools import setup, find_packages, Extension
 
+from distutils.command.install import INSTALL_SCHEMES
+for scheme in INSTALL_SCHEMES.values():
+    scheme['data'] = scheme['purelib']
+
 setup(
     name='pfp',
     version='0.0.1',
@@ -26,7 +30,7 @@ setup(
                   extra_compile_args=['-g']
                   ),
         ],
-    data_files=[('/usr/share/pfp', ['share/pfp/americanizations', 'share/pfp/binary_rules', 'share/pfp/sigs', 'share/pfp/sig_state',
-                                    'share/pfp/states', 'share/pfp/unary_rules', 'share/pfp/words', 'share/pfp/word_state'])]
+    data_files=[('share', ['share/pfp/americanizations', 'share/pfp/binary_rules', 'share/pfp/sigs', 'share/pfp/sig_state',
+                           'share/pfp/states', 'share/pfp/unary_rules', 'share/pfp/words', 'share/pfp/word_state'])]
 )
 

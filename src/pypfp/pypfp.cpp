@@ -45,12 +45,14 @@ pcfg_(states_, ug_, bg_)
   init(sentence_length, data_dir);
 }
 
-void pypfp::init(size_t sentence_length /*= 45*/, const std::string & data_dir /*= "/usr/share/pfp/"*/)
+void pypfp::init(size_t sentence_length /*= 45*/, const std::string & data_dir /*= ""*/)
 {
-  load(tokenizer_, fs::path(data_dir) / "americanizations");
-  load(states_, fs::path(data_dir) / "states");
+  fs::path data_dir_p = data_dir.empty() ? fs::path(extract<std::string>(import("pfp").attr("__file__"))).parent_path() / "share" : data_dir;
+
+  load(tokenizer_, data_dir_p / "americanizations");
+  load(states_, data_dir_p / "states");
   {
-    fs::path ps[] = { fs::path(data_dir) / "words", fs::path(data_dir) / "sigs", fs::path(data_dir) / "word_state", fs::path(data_dir) / "sig_state" };
+    fs::path ps[] = { data_dir_p / "words", data_dir_p / "sigs", data_dir_p / "word_state", data_dir_p / "sig_state" };
     std::ifstream ins[4];
     for (int i = 0; i != 4; ++i)
     {
@@ -60,8 +62,8 @@ void pypfp::init(size_t sentence_length /*= 45*/, const std::string & data_dir /
     }
     lexicon_.load(ins[0], ins[1], ins[2], ins[3]);
   }
-  load(ug_, fs::path(data_dir) / "unary_rules");
-  load(bg_, fs::path(data_dir) / "binary_rules");
+  load(ug_, data_dir_p / "unary_rules");
+  load(bg_, data_dir_p / "binary_rules");
   pworkspace_.reset(new workspace(sentence_length, states_.size()));
 }
 

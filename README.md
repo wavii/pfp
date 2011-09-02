@@ -20,10 +20,8 @@ The following works on **Ubuntu 10.04 LTS**:
     make
     ./test && sudo make install
 
-If you only want the python library, the following works too:
+To install the python library:
 
-    sudo apt-get install -y git-core cmake build-essential libboost-all-dev python-dev
-    git clone http://github.com/wavii/pfp.git && cd pfp
     sudo python setup.py install
 
 ## Benchmarks
