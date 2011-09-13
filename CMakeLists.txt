@@ -2,13 +2,22 @@ PROJECT(pfp)
 
 CMAKE_MINIMUM_REQUIRED(VERSION 2.4)
 
+if(COMMAND cmake_policy)
+  cmake_policy(SET CMP0003 NEW)
+endif(COMMAND cmake_policy)
+
 SET(CMAKE_VERBOSE_MAKEFILE ON)
 
 # binaries get installed here
 SET(CMAKE_INSTALL_PREFIX "/usr/")
 
-#add definitions, compiler switches, etc.
-ADD_DEFINITIONS(-Wall -O3 -DNDEBUG -march=native -mtune=native `getconf LFS_CFLAGS`)
+# add definitions, compiler switches, etc.
+
+IF(APPLE)
+   ADD_DEFINITIONS(-Wall -O3 -DNDEBUG)
+ELSE(APPLE)
+   ADD_DEFINITIONS(-Wall -O3 -DNDEBUG -march=native -mtune=native `getconf LFS_CFLAGS`)
+ENDIF(APPLE)
 
 INCLUDE_DIRECTORIES(include /usr/include/python2.6)
 
@@ -36,9 +45,16 @@ ADD_EXECUTABLE(pfpd
                src/moost/http/request_parser
                )
 
-TARGET_LINK_LIBRARIES(pfpd pfp boost_filesystem boost_thread boost_regex boost_system icuio)
-TARGET_LINK_LIBRARIES(pfpc pfp boost_filesystem boost_thread boost_regex boost_system icuio)
-TARGET_LINK_LIBRARIES(test pfp boost_thread boost_unit_test_framework boost_regex icuio)
+IF(APPLE)
+   TARGET_LINK_LIBRARIES(pfpd pfp boost_filesystem-mt boost_thread-mt boost_regex-mt boost_system-mt icuio)
+   TARGET_LINK_LIBRARIES(pfpc pfp boost_filesystem-mt boost_thread-mt boost_regex-mt boost_system-mt icuio)
+   TARGET_LINK_LIBRARIES(test pfp boost_thread-mt boost_unit_test_framework-mt boost_regex-mt icuio)
+   TARGET_LINK_LIBRARIES(pfp boost_filesystem-mt boost_thread-mt boost_regex-mt boost_system-mt icuio icuuc)
+ELSE(APPLE)
+   TARGET_LINK_LIBRARIES(pfpd pfp boost_filesystem boost_thread boost_regex boost_system icuio)
+   TARGET_LINK_LIBRARIES(pfpc pfp boost_filesystem boost_thread boost_regex boost_system icuio)
+   TARGET_LINK_LIBRARIES(test pfp boost_thread boost_unit_test_framework boost_regex icuio)
+ENDIF(APPLE)
 
 INSTALL(TARGETS pfpd DESTINATION bin)
 INSTALL(TARGETS pfpc DESTINATION bin)
