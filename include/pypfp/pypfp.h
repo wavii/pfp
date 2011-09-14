@@ -1,11 +1,11 @@
 #ifndef __PYPFP_H__
 #define __PYPFP_H__
 
+#include <boost/python.hpp> // note: must include python at the beginning or it will bitch
+#include <boost/shared_ptr.hpp>
+
 #include <vector>
 #include <string>
-
-#include <boost/python.hpp>
-#include <boost/shared_ptr.hpp>
 
 #include <pfp/tokenizer.h>
 #include <pfp/state_list.hpp>
