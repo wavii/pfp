@@ -11,8 +11,9 @@ for scheme in INSTALL_SCHEMES.values():
 
 import os
 import platform
-if platform.platform().startswith('Darwin') and '64bit' in platform.platform():
-    os.environ['ARCHFLAGS'] = "-arch x86_64"
+if platform.platform().startswith('Darwin'):
+    if '64bit' in platform.platform():
+        os.environ['ARCHFLAGS'] = "-arch x86_64"
     libraries = ['boost_python-mt', 'boost_filesystem-mt', 'boost_thread-mt', 'boost_regex-mt', 'boost_system-mt', 'icuio', 'icuuc']
 else:
     libraries=['boost_python', 'boost_filesystem', 'boost_thread', 'boost_regex', 'boost_system', 'icuio']
