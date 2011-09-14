@@ -24,7 +24,7 @@ To install the python library:
 
     sudo python setup.py install
 
-If you are running OS X using HomeBrew you may need to first get your dependencies in order:
+If you are running OS X using Homebrew you may need to first get your dependencies in order:
 
     brew install icu4c boost boost-jam
     ln -s /usr/local/Cellar/icu4c/4.4.1/include/unicode /usr/local/include/
