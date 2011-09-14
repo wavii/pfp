@@ -24,6 +24,13 @@ To install the python library:
 
     sudo python setup.py install
 
+If you are running OS X using HomeBrew you may need to first get your dependencies in order:
+
+    brew install icu4c boost boost-jam
+    ln -s /usr/local/Cellar/icu4c/4.4.1/include/unicode /usr/local/include/
+    ln -s /usr/local/Cellar/icu4c/4.4.1/include/layout /usr/local/include/
+    ls -1 /usr/local/Cellar/icu4c/4.4.1/lib/ | xargs -IFILE ln -s /usr/local/Cellar/icu4c/4.4.1/lib/FILE /usr/local/lib
+
 ## Benchmarks
 
 Parse times and maximum memory usage were recorded on a c1.medium Amazon EC2 instance.  pfp is compared to Stanford Parser version **1.6.3** running on **sun-java6**.
