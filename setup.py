@@ -9,6 +9,15 @@ from distutils.command.install import INSTALL_SCHEMES
 for scheme in INSTALL_SCHEMES.values():
     scheme['data'] = scheme['purelib']
 
+import os
+import platform
+if platform.platform().startswith('Darwin'):
+    if '64bit' in platform.platform():
+        os.environ['ARCHFLAGS'] = "-arch x86_64"
+    libraries = ['boost_python-mt', 'boost_filesystem-mt', 'boost_thread-mt', 'boost_regex-mt', 'boost_system-mt', 'icuio', 'icuuc']
+else:
+    libraries=['boost_python', 'boost_filesystem', 'boost_thread', 'boost_regex', 'boost_system', 'icuio']
+
 setup(
     name='pfp',
     version='0.0.2',
@@ -26,7 +35,7 @@ setup(
                    'src/pfp/tokenizer.yy.cpp',
                    'src/pypfp/pypfp.cpp'],
                   include_dirs=['include'],
-                  libraries=['boost_python', 'boost_filesystem', 'boost_thread', 'boost_regex', 'boost_system', 'icuio'],
+                  libraries=libraries,
                   extra_compile_args=['-g']
                   ),
         ],
