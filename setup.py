@@ -11,12 +11,14 @@ for scheme in INSTALL_SCHEMES.values():
 
 import os
 import platform
+LIBRARY_DIRS = ['/usr/local/lib', '/usr/lib', '/usr/local/Cellar/icu4c/4.8.1/lib']
+
 if platform.platform().startswith('Darwin'):
     if '64bit' in platform.platform():
         os.environ['ARCHFLAGS'] = "-arch x86_64"
     libraries = ['boost_python-mt', 'boost_filesystem-mt', 'boost_thread-mt', 'boost_regex-mt', 'boost_system-mt', 'icuio', 'icuuc']
 else:
-    libraries=['boost_python', 'boost_filesystem', 'boost_thread', 'boost_regex', 'boost_system', 'icuio']
+    libraries = ['boost_python', 'boost_filesystem', 'boost_thread', 'boost_regex', 'boost_system', 'icuio']
 
 setup(
     name='pfp',
@@ -34,7 +36,8 @@ setup(
                   ['src/pfp/config.cpp',
                    'src/pfp/tokenizer.yy.cpp',
                    'src/pypfp/pypfp.cpp'],
-                  include_dirs=['include'],
+                  include_dirs=['include', '/usr/local/Cellar/icu4c/4.8.1/include'],
+                  library_dirs=LIBRARY_DIRS,
                   libraries=libraries,
                   extra_compile_args=['-g']
                   ),
