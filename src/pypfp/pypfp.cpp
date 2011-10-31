@@ -47,7 +47,8 @@ pcfg_(states_, ug_, bg_)
 
 void pypfp::init(size_t sentence_length /*= 45*/, const std::string & data_dir /*= ""*/)
 {
-  fs::path data_dir_p = data_dir.empty() ? fs::path(extract<std::string>(import("pfp").attr("__file__"))).parent_path() / "share" : data_dir;
+  std::string pfp_path = extract<std::string>(import("pfp").attr("__file__"));
+  fs::path data_dir_p = data_dir.empty() ? fs::path(pfp_path).parent_path() / "share" : data_dir;
 
   load(tokenizer_, data_dir_p / "americanizations");
   load(states_, data_dir_p / "states");
