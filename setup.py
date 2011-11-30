@@ -42,4 +42,3 @@ setup(
     data_files=[('share', ['share/pfp/americanizations', 'share/pfp/binary_rules', 'share/pfp/sigs', 'share/pfp/sig_state',
                            'share/pfp/states', 'share/pfp/unary_rules', 'share/pfp/words', 'share/pfp/word_state'])]
 )
-
