@@ -20,7 +20,7 @@ else:
 
 setup(
     name='pfp',
-    version='0.0.2',
+    version='0.0.3',
     description='pretty fast statistical parser for natural languages',
     author='Wavii',
     author_email='info@wavii.com',
