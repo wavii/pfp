@@ -107,7 +107,11 @@ public:
   {
     pos_t sentence_size = static_cast<pos_t>(sentence.size());
     if ( sentence.size() > ws.words )
-      throw std::runtime_error("sentence too large for provided workspace");
+    {
+      std::ostringstream oss;
+      oss << "sentence too large for provided workspace (" << sentence.size() << ">" << static_cast<int>(ws.words) << ")";
+      throw std::runtime_error(oss.str());
+    }
 
     // initialize our workspace
     ws.clear(sentence_size);
