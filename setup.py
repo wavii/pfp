@@ -20,7 +20,7 @@ else:
 
 setup(
     name='pfp',
-    version='0.0.2',
+    version='0.0.3',
     description='pretty fast statistical parser for natural languages',
     author='Wavii',
     author_email='info@wavii.com',
@@ -42,4 +42,3 @@ setup(
     data_files=[('share', ['share/pfp/americanizations', 'share/pfp/binary_rules', 'share/pfp/sigs', 'share/pfp/sig_state',
                            'share/pfp/states', 'share/pfp/unary_rules', 'share/pfp/words', 'share/pfp/word_state'])]
 )
-
