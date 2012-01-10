@@ -33,6 +33,7 @@ private:
   boost::shared_ptr<workspace> pworkspace_;
 
   void init(size_t sentence_length = 45, const std::string & data_dir = "");
+  std::string _parse_tokens(const std::vector<std::string>& words);
 
 public:
 
@@ -43,6 +44,9 @@ public:
   pypfp(size_t sentence_length, const std::string & data_dir);
 
   std::string parse(const std::string & sentence);
+
+  std::string parse_tokens(const boost::python::list& words);
+
 };
 
 }}} // com::wavii::pfp
