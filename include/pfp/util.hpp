@@ -147,9 +147,17 @@ InputIterator stitch(Out & out, const node & tree, InputIterator word_it, StateL
   // don't output boundary
   if (tree.state == consts::boundary_state)
     return word_it;
-  out << '(' << states[tree.state].basic_category() << ' ';
-  if ( tree.children.empty() )
+
+  out << '(';
+  if (states[tree.state].basic_category() == "" && tree.children.empty())
+      out << *word_it;
+  else
+      out << states[tree.state].basic_category();
+  out << ' ';
+
+  if ( tree.children.empty() ) {
     out << *word_it++;
+  }
   else
   {
     for (std::vector< boost::shared_ptr< node > >::const_iterator it = tree.children.begin(); it != tree.children.end(); ++it)
