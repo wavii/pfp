@@ -149,7 +149,7 @@ InputIterator stitch(Out & out, const node & tree, InputIterator word_it, StateL
     return word_it;
 
   out << '(';
-  if (states[tree.state].basic_category() == "" && tree.children.empty())
+  if (states[tree.state].basic_category().empty() && tree.children.empty())
       out << *word_it;
   else
       out << states[tree.state].basic_category();
