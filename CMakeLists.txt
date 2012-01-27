@@ -25,11 +25,16 @@ ADD_EXECUTABLE(test
                src/test/lexicon.cpp
                src/test/pcfg_parser.cpp
                src/test/tokenizer.cpp
+               src/test/pfp.cpp
                src/test/main.cpp
                )
 
 ADD_EXECUTABLE(pfpc
                src/pfpc/main.cpp
+               )
+
+ADD_EXECUTABLE(pfpc_token
+               src/pfpc/pfpc_token.cpp
                )
 
 ADD_LIBRARY(pfp SHARED
@@ -48,16 +53,19 @@ ADD_EXECUTABLE(pfpd
 IF(APPLE)
    TARGET_LINK_LIBRARIES(pfpd pfp boost_filesystem-mt boost_thread-mt boost_regex-mt boost_system-mt icuio)
    TARGET_LINK_LIBRARIES(pfpc pfp boost_filesystem-mt boost_thread-mt boost_regex-mt boost_system-mt icuio)
+   TARGET_LINK_LIBRARIES(pfpc_token pfp boost_filesystem-mt boost_thread-mt boost_regex-mt boost_system-mt icuio)
    TARGET_LINK_LIBRARIES(test pfp boost_thread-mt boost_unit_test_framework-mt boost_regex-mt icuio)
    TARGET_LINK_LIBRARIES(pfp boost_filesystem-mt boost_thread-mt boost_regex-mt boost_system-mt icuio icuuc)
 ELSE(APPLE)
    TARGET_LINK_LIBRARIES(pfpd pfp boost_filesystem boost_thread boost_regex boost_system icuio icuuc)
    TARGET_LINK_LIBRARIES(pfpc pfp boost_filesystem boost_thread boost_regex boost_system icuio icuuc)
+   TARGET_LINK_LIBRARIES(pfpc_token pfp boost_filesystem boost_thread boost_regex boost_system icuio icuuc)
    TARGET_LINK_LIBRARIES(test pfp boost_thread boost_unit_test_framework boost_regex icuio icuuc)
 ENDIF(APPLE)
 
 INSTALL(TARGETS pfpd DESTINATION bin)
 INSTALL(TARGETS pfpc DESTINATION bin)
+INSTALL(TARGETS pfpc_token DESTINATION bin)
 
 INSTALL(TARGETS pfp LIBRARY DESTINATION lib)
 INSTALL(DIRECTORY share/pfp DESTINATION share)
