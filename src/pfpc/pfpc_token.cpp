@@ -31,7 +31,7 @@ void load(T & obj, boost::filesystem::path p)
 int main(int argc, char * argv[])
 {
   std::clog << "pfpc_token: command line interface for pfp!" << std::endl;
-  std::clog << "build: " << __DATE__ << " (" << __TIME__ << ") of pfp version " << consts::version << " (c) Wavii,Inc. 2010" << std::endl;
+  std::clog << "build: " << __DATE__ << " (" << __TIME__ << ") of pfp version " << consts::version << " (c) Wavii,Inc. 2012" << std::endl;
   std::clog << "usage: " << argv[0] << " <max sentence length=45> <data dir=/usr/share/pfp/>" << std::endl;
 
   size_t sentence_length = argc < 2 ? 45 : lexical_cast<size_t>(argv[1]);
