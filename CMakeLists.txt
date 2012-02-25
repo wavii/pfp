@@ -60,7 +60,7 @@ ELSE(APPLE)
    TARGET_LINK_LIBRARIES(pfpd pfp boost_filesystem boost_thread boost_regex boost_system icuio icuuc)
    TARGET_LINK_LIBRARIES(pfpc pfp boost_filesystem boost_thread boost_regex boost_system icuio icuuc)
    TARGET_LINK_LIBRARIES(pfpc_token pfp boost_filesystem boost_thread boost_regex boost_system icuio icuuc)
-   TARGET_LINK_LIBRARIES(test pfp boost_thread boost_unit_test_framework boost_regex icuio icuuc)
+   TARGET_LINK_LIBRARIES(test pfp boost_filesystem boost_thread boost_unit_test_framework boost_regex boost_system icuio icuuc)
 ENDIF(APPLE)
 
 INSTALL(TARGETS pfpd DESTINATION bin)
