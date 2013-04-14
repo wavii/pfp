@@ -27,9 +27,9 @@ To install the python library:
 If you are running OS X using [Homebrew](http://mxcl.github.com/homebrew/) you may need to first get your dependencies in order:
 
     brew install icu4c boost boost-jam
-    ln -s /usr/local/Cellar/icu4c/4.4.1/include/unicode /usr/local/include/
-    ln -s /usr/local/Cellar/icu4c/4.4.1/include/layout /usr/local/include/
-    ls -1 /usr/local/Cellar/icu4c/4.4.1/lib/ | xargs -IFILE ln -s /usr/local/Cellar/icu4c/4.4.1/lib/FILE /usr/local/lib
+    ln -s /usr/local/Cellar/icu4c/50.1/include/unicode /usr/local/include/
+    ln -s /usr/local/Cellar/icu4c/50.1/include/layout /usr/local/include/
+    ls -1 /usr/local/Cellar/icu4c/50.1/lib/ | xargs -IFILE ln -s /usr/local/Cellar/icu4c/50.1/lib/FILE /usr/local/lib
 
 ## Benchmarks
 
